@@ -1,0 +1,26 @@
+version: 2.1
+
+executors:
+  python-executor:
+    docker:
+      - image: cimg/python:3.10
+
+jobs:
+  test:
+    executor: python-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: pip install requests
+      - run:
+          name: Run unit tests
+          command: |
+            cd GitHubApi567-hw3a
+            python -m unittest TestRepoReader.py
+
+workflows:
+  version: 2
+  test-workflow:
+    jobs:
+      - test
