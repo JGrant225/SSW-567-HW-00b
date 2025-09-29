@@ -8,6 +8,7 @@ install:
  - pip install requests
 
 script:
+  - cd "GitHubApi567-hw3a"
   - python -m unittest TestRepoReader.py
 
 branches:
